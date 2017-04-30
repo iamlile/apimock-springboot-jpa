@@ -24,7 +24,7 @@ public interface ApiMockResponseHeadersRepository   extends JpaRepository<ApiMoc
 //    List<ApiMockResponseHeaders> withApiMockIdQuery(Integer apiMockId);
 
     @Query("SELECT a FROM ApiMockResponseHeaders a JOIN a.apiMockBasicinfo b WHERE b.id=:id")
-    List<ApiMockResponseHeaders> findByApiMockRequestHeadersByApiMOckId(@Param("id") Integer apiMockId);
+    List<ApiMockResponseHeaders> findByApiMockId(@Param("id") Integer apiMockId);
 
 
 }

@@ -37,6 +37,8 @@ public class Project {
     public Project(String name) {
         this.name = name;
     }
+    public Project() {
+    }
 
 
     public String getName() {

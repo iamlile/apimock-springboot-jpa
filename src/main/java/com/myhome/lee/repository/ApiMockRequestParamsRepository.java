@@ -4,12 +4,14 @@ import com.myhome.lee.entity.ApiMockRequestParams;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by lee on 2017/4/30.
  */
+@Component
 public interface ApiMockRequestParamsRepository  extends JpaRepository<ApiMockRequestParams, Integer> {
 
     ApiMockRequestParams findByName(String name);
@@ -22,7 +24,7 @@ public interface ApiMockRequestParamsRepository  extends JpaRepository<ApiMockRe
 //    List<ApiMockRequestParams> withApiMockIdQuery(Integer apiMockId);
 
     @Query(value = "SELECT a FROM ApiMockRequestParams a JOIN a.apiMockBasicinfo b WHERE b.id=:id")
-    List<ApiMockRequestParams> findByApiMockRequestHeadersByApiMockId(@Param("id") Integer apiMockId);
+    List<ApiMockRequestParams> findByApiMockId(@Param("id") Integer apiMockId);
 
 
 
