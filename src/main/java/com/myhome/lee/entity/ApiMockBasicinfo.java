@@ -7,7 +7,6 @@ import java.util.Set;
 
 
 @Entity
-
 //@Table(indexes = {@Index(name = "idx_project_id", columnList = "projectId")})
 public class ApiMockBasicinfo {
 

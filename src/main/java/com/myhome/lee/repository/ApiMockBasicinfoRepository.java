@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Created by lee on 2017/3/11.
  */
 @Repository
-public interface ApiMockBasicinfoRepository extends JpaRepository<ApiMockBasicinfo, Long> {
+public interface ApiMockBasicinfoRepository extends JpaRepository<ApiMockBasicinfo, Integer> {
 
     ApiMockBasicinfo findByName(String name);
 
