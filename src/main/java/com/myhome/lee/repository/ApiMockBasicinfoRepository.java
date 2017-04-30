@@ -20,8 +20,11 @@ public interface ApiMockBasicinfoRepository extends JpaRepository<ApiMockBasicin
     ApiMockBasicinfo findByIdAndName(Integer id, String name);
 
 
-    @Query("from  ApiMockBasicinfo a where a.id=:id")
+    @Query(value = "select a from  ApiMockBasicinfo a where a.id=:id")
     ApiMockBasicinfo findApiMockBasicinfo(@Param("id") Integer id);
+
+
+
 
 
 }

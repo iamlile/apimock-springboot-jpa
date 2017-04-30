@@ -28,7 +28,7 @@ public class ApiMockRequestParams {
     private String depict;
 
     @ManyToOne(optional=false,cascade=CascadeType.ALL)
-    @JoinColumn(name="api_mock_id",nullable=true)
+    @JoinColumn(name="api_mock_id",referencedColumnName="id", nullable=true)
     private ApiMockBasicinfo apiMockBasicinfo;
 
     //@OneToOne(mappedBy = "apiMockBasicinfo")

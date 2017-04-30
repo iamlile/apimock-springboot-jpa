@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by lee on 2017/4/30.
@@ -19,11 +20,11 @@ public interface ApiMockResponseHeadersRepository   extends JpaRepository<ApiMoc
 
     ApiMockResponseHeaders findByIdAndName(Integer id, String name);
 
-    @Query("from  ApiMockResponseHeaders a where a.api_mock_id=:apiMockId")
-    List<ApiMockResponseHeaders> findApiMockResponseHeaders(@Param("id") Integer apiMockId);
+//    @Query(value = "select a from  ApiMockResponseHeaders a where a.apiMockBasicinfo.id=?1")
+//    List<ApiMockResponseHeaders> withApiMockIdQuery(Integer apiMockId);
 
-
-
+    @Query("SELECT a FROM ApiMockResponseHeaders a JOIN a.apiMockBasicinfo b WHERE b.id=:id")
+    List<ApiMockResponseHeaders> findByApiMockRequestHeadersByApiMOckId(@Param("id") Integer apiMockId);
 
 
 }

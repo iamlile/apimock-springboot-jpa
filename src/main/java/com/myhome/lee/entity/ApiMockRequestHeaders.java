@@ -26,8 +26,9 @@ public class ApiMockRequestHeaders {
     //@JoinColumn(name = "id",foreignKey = @ForeignKey(name = "fk_api_mock_request_headers"))
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "api_mock_id", nullable = true)
+    @JoinColumn(name = "api_mock_id", referencedColumnName="id", nullable = true)
     private ApiMockBasicinfo apiMockBasicinfo;
+
 
     //@OneToOne(mappedBy = "apiMockBasicinfo")
     public ApiMockBasicinfo getApiMockBasicinfo() {

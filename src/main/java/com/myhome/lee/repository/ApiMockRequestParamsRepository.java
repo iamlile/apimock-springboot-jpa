@@ -1,6 +1,5 @@
 package com.myhome.lee.repository;
 
-import com.myhome.lee.entity.ApiMockRequestHeaders;
 import com.myhome.lee.entity.ApiMockRequestParams;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,8 +18,11 @@ public interface ApiMockRequestParamsRepository  extends JpaRepository<ApiMockRe
 
     ApiMockRequestParams findByIdAndName(Integer id, String name);
 
-    @Query("from  ApiMockRequestParams a where a.api_mock_id=:apiMockId")
-    List<ApiMockRequestParams> findApiMockRequestParams(@Param("id") Integer apiMockId);
+//    @Query(value = "select from  ApiMockRequestParams a where a.apiMockBasicinfo.id=?1")
+//    List<ApiMockRequestParams> withApiMockIdQuery(Integer apiMockId);
+
+    @Query(value = "SELECT a FROM ApiMockRequestParams a JOIN a.apiMockBasicinfo b WHERE b.id=:id")
+    List<ApiMockRequestParams> findByApiMockRequestHeadersByApiMockId(@Param("id") Integer apiMockId);
 
 
 
