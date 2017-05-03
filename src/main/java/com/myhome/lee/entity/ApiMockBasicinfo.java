@@ -1,9 +1,9 @@
 package com.myhome.lee.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -79,23 +79,33 @@ public class ApiMockBasicinfo {
         return project;
     }
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id", nullable = true)
+    //@JsonIgnore
+    @JsonManagedReference
     private Project project;
 
 
-    @OneToMany(mappedBy = "apiMockBasicinfo", cascade = CascadeType.ALL)
-    private Set<ApiMockRequestHeaders> apiMockRequestHeadersHashSet = new HashSet<ApiMockRequestHeaders>();
+    //@JsonIgnore
+    //@JsonBackReference
+    @JsonManagedReference
+    @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ApiMockRequestHeaders> apiMockRequestHeadersHashSet = new ArrayList<>();
 
-
-    @OneToMany(mappedBy = "apiMockBasicinfo", cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //@JsonBackReference
+    @JsonManagedReference
+    @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ApiMockRequestParams> apiMockRequestParamsHashSet = new HashSet<ApiMockRequestParams>();
 
-    @OneToMany(mappedBy = "apiMockBasicinfo", cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //@JsonBackReference
+    @JsonManagedReference
+    @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ApiMockResponseHeaders> apiMockResponseHeadersHashSet = new HashSet<ApiMockResponseHeaders>();
 
 
-    public Set<ApiMockRequestHeaders> getApiMockRequestHeadersHashSet() {
+    public List<ApiMockRequestHeaders> getApiMockRequestHeadersHashSet() {
         return apiMockRequestHeadersHashSet;
     }
 

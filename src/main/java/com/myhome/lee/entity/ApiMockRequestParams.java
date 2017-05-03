@@ -1,5 +1,7 @@
 package com.myhome.lee.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 
@@ -27,8 +29,9 @@ public class ApiMockRequestParams {
     @Column(nullable = false)
     private String depict;
 
-    @ManyToOne(optional=false,cascade=CascadeType.ALL)
+    @ManyToOne(optional=false,fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name="api_mock_id",referencedColumnName="id", nullable=true)
+    @JsonBackReference
     private ApiMockBasicinfo apiMockBasicinfo;
 
     //@OneToOne(mappedBy = "apiMockBasicinfo")

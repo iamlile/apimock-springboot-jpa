@@ -1,5 +1,7 @@
 package com.myhome.lee.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,8 +27,9 @@ public class ApiMockRequestHeaders {
     //@OneToOne
     //@JoinColumn(name = "id",foreignKey = @ForeignKey(name = "fk_api_mock_request_headers"))
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "api_mock_id", referencedColumnName="id", nullable = true)
+    @JsonBackReference
     private ApiMockBasicinfo apiMockBasicinfo;
 
 

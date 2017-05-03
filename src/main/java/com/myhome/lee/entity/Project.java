@@ -1,5 +1,7 @@
 package com.myhome.lee.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +28,8 @@ public class Project {
     private String name;
 
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<ApiMockBasicinfo> apiMockBasicinfosHashSet = new HashSet<ApiMockBasicinfo>();
 
     public Set<ApiMockBasicinfo> getApiMockBasicinfosHashSet() {
