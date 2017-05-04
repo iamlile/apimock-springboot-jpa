@@ -1,0 +1,5 @@
+ @JsonManagedReference
+
+  @JsonBackReference
+
+  http://blog.csdn.net/tfy1332/article/details/51245470
