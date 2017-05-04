@@ -38,9 +38,6 @@ public class ApiMockBasicinfo {
     @Column(nullable = false)
     private Boolean isUploaded;
 
-//    @Column(nullable = false)
-//    private Integer projectId;
-
     @Column(nullable = false)
     private Date createTime;
 
@@ -81,31 +78,23 @@ public class ApiMockBasicinfo {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "project_id", nullable = true)
-    //@JsonIgnore
     @JsonManagedReference
     private Project project;
 
-
-    //@JsonIgnore
-    //@JsonBackReference
     @JsonManagedReference
     @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<ApiMockRequestHeaders> apiMockRequestHeadersHashSet = new ArrayList<>();
+    private Set<ApiMockRequestHeaders> apiMockRequestHeadersHashSet = new HashSet<>();
 
-    //@JsonIgnore
-    //@JsonBackReference
     @JsonManagedReference
     @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ApiMockRequestParams> apiMockRequestParamsHashSet = new HashSet<ApiMockRequestParams>();
 
-    //@JsonIgnore
-    //@JsonBackReference
     @JsonManagedReference
     @OneToMany(mappedBy = "apiMockBasicinfo", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<ApiMockResponseHeaders> apiMockResponseHeadersHashSet = new HashSet<ApiMockResponseHeaders>();
 
 
-    public List<ApiMockRequestHeaders> getApiMockRequestHeadersHashSet() {
+    public Set<ApiMockRequestHeaders> getApiMockRequestHeadersHashSet() {
         return apiMockRequestHeadersHashSet;
     }
 
@@ -216,13 +205,13 @@ public class ApiMockBasicinfo {
         this.isUploaded = isUploaded;
     }
 
-//    public Integer getProjectId() {
-//        return project.getId();
-//    }
-//
-//    public void setProjectId(Integer projectId) {
-//        this.project.setId(projectId);
-//    }
+    public Integer getProjectId() {
+        return project.getId();
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.project.setId(projectId);
+    }
 
     public Date getCreateTime() {
         return createTime;
